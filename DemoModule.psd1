@@ -88,7 +88,7 @@
 
     # List of all files packaged with this module
     # FileList = @()
-
+    <#
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
 
@@ -121,7 +121,7 @@
         } # End of PSData hashtable
 
     } # End of PrivateData hashtable
-
+#>
     # HelpInfo URI of this module
     # HelpInfoURI = ''
 
