@@ -32,7 +32,7 @@ jobs:
           }
         env:
           POWERSHELL_GALLERY_API_KEY: ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
-        - name: Set up PowerShell Gallery repository
+      - name: Set up PowerShell Gallery repository
           shell: pwsh
           run: |
           if (-not (Get-PSRepository -Name 'PSGallery' -ErrorAction SilentlyContinue)) {
