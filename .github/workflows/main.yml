@@ -22,9 +22,7 @@ jobs:
           Write-Host "`nParent directory:"
           Get-ChildItem .. -Directory
       - name: Build and publish
-        env:
-          PSGalleryApiKey = "${{ secrets.DEMOMODULEPSG }}""
-          BUILDVER: "0.1.0"
+        $env:PSGalleryApiKey = "${{ secrets.DEMOMODULEPSG }}""
         shell: pwsh
         run: |
           ./build_scripts/build.ps1
