@@ -36,8 +36,7 @@ jobs:
           shell: pwsh
             run: |
             if (-not (Get-PSRepository -Name 'PSGallery' -ErrorAction SilentlyContinue)) {
-            Register-PSRepository -Name 'PSGallery' `
-            -SourceLocation 'https://www.powershellgallery.com/api/v2/' -InstallationPolicy Trusted
+            Register-PSRepository -Name 'PSGallery' -SourceLocation 'https://www.powershellgallery.com/api/v2/' -InstallationPolicy Trusted
             }
       - name: Build and publish
         env:
