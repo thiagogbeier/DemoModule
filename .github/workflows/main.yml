@@ -34,7 +34,7 @@ jobs:
           NUGET_KEY: ${{ secrets.DEMOMODULEPSG }}
       - name: Build and publish
         env:
-          DEMOMONUGET_KEYDULEPSG: ${{ secrets.DEMOMODULEPSG }}
+          NUGET_KEYG: ${{ secrets.DEMOMODULEPSG }}
           BUILDVER: "0.1.0"
         shell: pwsh
         run: |
