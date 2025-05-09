@@ -2,7 +2,7 @@ $Global:ErrorActionPreference = 'Stop'
 $Global:VerbosePreference = 'SilentlyContinue'
 
 $buildVersion = $env:BUILDVER
-$manifestPath = "./DemoModule/DemoModule.psd1"
+$manifestPath = "./DemoModule.psd1"
 $publicFuncFolderPath = './DemoModule/functions'
 
 
