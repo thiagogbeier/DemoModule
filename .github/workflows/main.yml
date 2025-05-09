@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: List directory contents
         shell: pwsh
         run: |
@@ -21,6 +22,7 @@ jobs:
           Get-ChildItem -Directory
           Write-Host "`nParent directory:"
           Get-ChildItem .. -Directory
+
       - name: Validate NuGet API Key
         shell: pwsh
         run: |
@@ -32,21 +34,23 @@ jobs:
           }
         env:
           POWERSHELL_GALLERY_API_KEY: ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
+
       - name: Set up PowerShell Gallery repository
-          shell: pwsh
-            run: |
-            if (-not (Get-PSRepository -Name 'PSGallery' -ErrorAction SilentlyContinue)) {
+        shell: pwsh
+        run: |
+          if (-not (Get-PSRepository -Name 'PSGallery' -ErrorAction SilentlyContinue)) {
             Register-PSRepository -Name 'PSGallery' -SourceLocation 'https://www.powershellgallery.com/api/v2/' -InstallationPolicy Trusted
-            }
+          }
+
       - name: Build and publish
+        shell: pwsh
         env:
           POWERSHELL_GALLERY_API_KEY: ${{ secrets.POWERSHELL_GALLERY_API_KEY }}
           BUILDVER: "0.1.0"
-          shell: pwsh
-          run: |
-            ./build_scripts/build.ps1
-            if (Test-Path ../DemoModule) {
-              Publish-Module -Path ../DemoModule -Repository PSGallery -NuGetApiKey ${{ secrets.POWERSHELL_GALLERY_API_KEY }} -verbose
-            } else {
-              Write-Error "DemoModule folder not found."
-            }
+        run: |
+          ./build_scripts/build.ps1
+          if (Test-Path ../DemoModule) {
+            Publish-Module -Path ../DemoModule -Repository PSGallery -NuGetApiKey $env:POWERSHELL_GALLERY_API_KEY -Verbose
+          } else {
+            Write-Error "DemoModule folder not found."
+          }
