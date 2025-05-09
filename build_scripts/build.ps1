@@ -3,7 +3,7 @@ $Global:VerbosePreference = 'SilentlyContinue'
 
 $buildVersion = $env:BUILDVER
 $manifestPath = "./DemoModule.psd1"
-$publicFuncFolderPath = './DemoModule/functions'
+$publicFuncFolderPath = './functions'
 
 
 if (!(Get-PackageProvider | Where-Object { $_.Name -eq 'NuGet' })) {
