@@ -22,12 +22,14 @@ jobs:
           Write-Host "`nParent directory:"
           Get-ChildItem .. -Directory
       - name: Build and publish
-        $env:PSGalleryApiKey = "${{ secrets.DEMOMODULEPSG }}""
+        env:
+          DEMOMODULEPSG: ${{ secrets.DEMOMODULEPSG }}
+          BUILDVER: "0.1.0"
         shell: pwsh
         run: |
           ./build_scripts/build.ps1
           if (Test-Path ../DemoModule) {
-            Publish-Module -Path ../DemoModule -NuGetApiKey $env:PSGalleryApiKey -Verbose
+            Publish-Module -Path ../DemoModule -NuGetApiKey $env:DEMOMODULEPSG -Verbose
           } else {
             Write-Error "DemoModule folder not found."
           }
