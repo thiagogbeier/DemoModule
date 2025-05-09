@@ -13,4 +13,4 @@ else
 #Add-Type -AssemblyName System.Speech;
 $Speak = New-Object -ComObject SAPI.SPVoice
 $Speak.Voice = $Speak.GetVoices().Item($voice)
-$Speak.Speak($(irm 'https://catfact.ninja/fact' -UseBasicParsing).fact) | Out-Null
+$Speak.Speak($(Invoke-RestMethod 'https://catfact.ninja/fact' -UseBasicParsing).fact) | Out-Null
