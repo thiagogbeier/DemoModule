@@ -14,11 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
       - name: List directory contents
-        shell: pwsh
-        run: Get-ChildItem -Recurse
-
+        shell: pwsh
+        run: Get-ChildItem -Recurse
       - name: Build and publish
         env:
           NUGET_KEY: ${{ secrets.DEMOMODULEPSG }}
