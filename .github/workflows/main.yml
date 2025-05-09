@@ -16,7 +16,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: List directory contents
         shell: pwsh
-        run: Write-Host "Current directory:"
+        run: |
+          Write-Host "Current directory:"
           Get-ChildItem -Directory
           Write-Host "`nParent directory:"
           Get-ChildItem .. -Directory
